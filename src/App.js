@@ -8,32 +8,43 @@ function App() {
 
   const handleButtonClick = (value) => {
     if (input === '' && value === '0') {
-      // Prevents multiple leading zeros
       return;
     }
     if (value === '.' && input.split(/[\+\-\*\/]/).pop().includes('.')) {
-      // Prevents multiple decimals in a number
       return;
     }
     setInput((prev) => prev + value);
   };
 
   const handleOperatorClick = (operator) => {
-    if (input !== '' && '+-*/'.includes(input.slice(-1))) {
-      // If the last character is an operator, replace it with the new one
-      setInput(input.slice(0, -1) + operator);
-    } else if (input !== '') {
-      setInput(input + operator);
+    if (input !== '') {
+      if ('+-*/'.includes(input.slice(-1))) {
+        if ('+-*/'.includes(input.slice(-2, -1))) {
+          setInput(input.slice(0, -2) + operator);
+        } else if (operator === '-' && !'+-*/'.includes(input.slice(-2, -1))) {
+          setInput(input + operator);
+        } else {
+          setInput(input.slice(0, -1) + operator);
+        }
+      } else {
+        setInput(input + operator);
+      }
+    } else if (operator === '-') {
+      setInput(operator);
     }
   };
+  
+  
+  
 
   const calculateResult = () => {
     try {
-      const result = evaluate(input).toString();
-      setResult(result);
-      setInput('');
+      const evaluatedResult = evaluate(input).toString();
+      setResult(evaluatedResult);
+      setInput(evaluatedResult);
     } catch (error) {
       setResult('Error');
+      setInput('');
     }
   };
 
