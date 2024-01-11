@@ -56,25 +56,31 @@ function App() {
   return (
     <div className="calculator">
       <div id="display">{input || result}</div>
-      <button id="clear" onClick={clearInput}>C</button>
-      <button id="zero" onClick={() => handleButtonClick('0')}>0</button>
-      <button id="one" onClick={() => handleButtonClick('1')}>1</button>
-      <button id="two" onClick={() => handleButtonClick('2')}>2</button>
-      <button id="three" onClick={() => handleButtonClick('3')}>3</button>
-      <button id="four" onClick={() => handleButtonClick('4')}>4</button>
-      <button id="five" onClick={() => handleButtonClick('5')}>5</button>
-      <button id="six" onClick={() => handleButtonClick('6')}>6</button>
+      
+      <button id="clear" onClick={clearInput}>AC</button>
+      <button id="divide" onClick={() => handleOperatorClick('/')}>/</button>
+      <button id="multiply" onClick={() => handleOperatorClick('*')}>x</button>
+      <button id="subtract" onClick={() => handleOperatorClick('-')}>-</button>
+      <button id="add" onClick={() => handleOperatorClick('+')}>+</button>
+      
       <button id="seven" onClick={() => handleButtonClick('7')}>7</button>
       <button id="eight" onClick={() => handleButtonClick('8')}>8</button>
       <button id="nine" onClick={() => handleButtonClick('9')}>9</button>
-      <button id="add" onClick={() => handleOperatorClick('+')}>+</button>
-      <button id="subtract" onClick={() => handleOperatorClick('-')}>-</button>
-      <button id="multiply" onClick={() => handleOperatorClick('*')}>*</button>
-      <button id="divide" onClick={() => handleOperatorClick('/')}>/</button>
+      
+      <button id="four" onClick={() => handleButtonClick('4')}>4</button>
+      <button id="five" onClick={() => handleButtonClick('5')}>5</button>
+      <button id="six" onClick={() => handleButtonClick('6')}>6</button>
+  
+      <button id="one" onClick={() => handleButtonClick('1')}>1</button>
+      <button id="two" onClick={() => handleButtonClick('2')}>2</button>
+      <button id="three" onClick={() => handleButtonClick('3')}>3</button>
+      
+      <button id="zero" onClick={() => handleButtonClick('0')}>0</button>
       <button id="decimal" onClick={() => handleButtonClick('.')}>.</button>
       <button id="equals" onClick={calculateResult}>=</button>
     </div>
   );
+  
 }
 
 export default App;
